@@ -20,32 +20,32 @@ Vue.use(YmapPlugin)
 
 // NOTE: workaround for VeeValidate + vuetable-2
 Vue.use(VeeValidate, {
-    fieldsBagName: 'formFields'
+  fieldsBagName: 'formFields'
 })
 
 router.beforeEach((to, from, next) => {
-    store.commit('setLoading', true)
-    next()
+  store.commit('setLoading', true)
+  next()
 })
 
 router.afterEach((to, from) => {
-    store.commit('setLoading', false)
+  store.commit('setLoading', false)
 })
 
 /* eslint-disable no-new */
 Vue.use(new VueSocketIO({
-    debug: true,
-    connection: 'https://jmrsquared.com/api/',
-    vuex: {
-        store,
-        actionPrefix: 'SOCKET_',
-        mutationPrefix: 'SOCKET_'
-    }
+  debug: true,
+  connection: 'http://68.66.193.181:9999',
+  vuex: {
+    store,
+    actionPrefix: 'SOCKET_',
+    mutationPrefix: 'SOCKET_'
+  }
 }))
 
 new Vue({
-    el: '#app',
-    router,
-    store,
-    render: h => h(App),
+  el: '#app',
+  router,
+  store,
+  render: h => h(App),
 })

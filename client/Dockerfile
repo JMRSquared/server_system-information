@@ -10,4 +10,4 @@ RUN npm install http-server -g
 
 RUN npm install && npm run build
 
-CMD http-server ./dist
+CMD ["http-server","./dist"]
