@@ -1,0 +1,14 @@
+#!/usr/bin/nodejs
+
+var debug = require('debug')('JmrSquared');
+var app = require('../app');
+var Socket = require('../services/socket');
+
+app.set('port', 9999);
+
+var server = app.listen(app.get('port'), function () {
+  var io = require('socket.io')(server);
+  var t = new Socket(io);
+
+  debug('Express server listening on port ' + server.address().port);
+});
