@@ -14,7 +14,6 @@ import './i18n'
 import YmapPlugin from 'vue-yandex-maps'
 import VueSocketIO from 'vue-socket.io'
 
-
 Vue.use(VuesticPlugin)
 Vue.use(YmapPlugin)
 
@@ -35,7 +34,7 @@ router.afterEach((to, from) => {
 /* eslint-disable no-new */
 Vue.use(new VueSocketIO({
   debug: true,
-  connection: 'http://68.66.193.181:9999',
+  connection: 'https://jmrsquared.com/api/',
   vuex: {
     store,
     actionPrefix: 'SOCKET_',
