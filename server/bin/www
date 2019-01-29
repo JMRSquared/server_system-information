@@ -8,7 +8,13 @@ app.set('port', 9999);
 
 var server = app.listen(app.get('port'), function () {
   var io = require('socket.io')(server);
-  io.origins('*:*');
+  io.origins((origin, callback) => {
+    console.log('origin', origin);
+    if (origin !== 'https://foo.example.com') {
+      return callback('origin not allowed', false);
+    }
+    callback(null, true);
+  });
   var t = new Socket(io);
 
   debug('Express server listening on port ' + server.address().port);
