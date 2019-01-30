@@ -19,19 +19,21 @@ Vue.use(YmapPlugin)
 
 // NOTE: workaround for VeeValidate + vuetable-2
 Vue.use(VeeValidate, {
-  fieldsBagName: 'formFields'
+    fieldsBagName: 'formFields'
 })
 
 router.beforeEach((to, from, next) => {
-  store.commit('setLoading', true)
-  next()
+    store.commit('setLoading', true)
+    next()
 })
 
 router.afterEach((to, from) => {
-  store.commit('setLoading', false)
+    store.commit('setLoading', false)
 })
 
 /* eslint-disable no-new */
+/*
+ ENABLE THIS WHEN YOU GET THE SOCKETS TO WORK
 Vue.use(new VueSocketIO({
   debug: true,
   connection: 'https://jmrsquared.com/api/',
@@ -41,10 +43,11 @@ Vue.use(new VueSocketIO({
     mutationPrefix: 'SOCKET_'
   }
 }))
+*/
 
 new Vue({
-  el: '#app',
-  router,
-  store,
-  render: h => h(App),
+    el: '#app',
+    router,
+    store,
+    render: h => h(App),
 })

@@ -47,7 +47,7 @@ class Socket {
                 socket.emit("sendStats", "PROCESSUSAGE", data);
             })
             si.mem((data) => {
-                socket.emit("sendStats", "RAMUSAGE", data);
+                socket.emit("sendStats", "MEM", data);
             })
         }, 1000);
         this.timers.push({
